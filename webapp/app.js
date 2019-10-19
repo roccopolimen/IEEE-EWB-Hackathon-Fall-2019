@@ -8,7 +8,7 @@ var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.post("addRow", function(request, response){
+app.get("addRow", function(request, response){
     //var crop = "crop test";
     //var city = "city test";
     //var state = "state test";
@@ -16,7 +16,7 @@ app.post("addRow", function(request, response){
     //var profit = "profit test";
 
     CSVToJSON().fromFile("./dataset.csv").then(source => {
-        console.log(source);
+        //console.log(source);
         source.push({
             "crop": request.body.crop,
             "city": request.body.city,
@@ -29,6 +29,6 @@ app.post("addRow", function(request, response){
     });
 });
 
-app.listen(8080, function(){
-    console.log("Hello World");
-});
+// app.listen(8080, function(){
+//     console.log("Hello World");
+// });
