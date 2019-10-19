@@ -16,18 +16,17 @@ submit.onclick = function(){
     var state = document.getElementById("state").value;
     var yield = document.getElementById("yield").value;
     var profit = document.getElementById("profit").value;
-
-
-    CSVToJSON().fromFile("./dataset.csv").then(source => {
-        console.log(source);
-        source.push({
-            "crop": crop,
-            "city": city,
-            "state": state,
-            "yield": yield,
-            "profit": profit
-        });
-        const csv = JSONToCSV(source, {fields: ["crop", "city", "state", "yield", "profit"]});
-        FileSystem.writeFileSync("./dataset.csv", csv);
-    });
 }
+
+CSVToJSON().fromFile("./dataset.csv").then(source => {
+    console.log(source);
+    source.push({
+        "crop": crop,
+        "city": city,
+        "state": state,
+        "yield": yield,
+        "profit": profit
+    });
+    const csv = JSONToCSV(source, {fields: ["crop", "city", "state", "yield", "profit"]});
+    FileSystem.writeFileSync("./dataset.csv", csv);
+});
