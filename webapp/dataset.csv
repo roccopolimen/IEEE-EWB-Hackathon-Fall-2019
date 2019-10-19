@@ -1,1 +1,1 @@
-"crop","city","state","yield","profit"
+crops,city,state,yield,profit,temperature,humidity,pressure,waterLevel
