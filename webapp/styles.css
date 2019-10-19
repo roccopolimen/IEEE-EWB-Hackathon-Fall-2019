@@ -10,7 +10,7 @@ h1{
     text-decoration: underline;
 }
 
-input[type="text"]{
+input[type="text"], input[type="submit"]{
     background-color: white;
     width: 200px;
     height: 30px;
@@ -37,4 +37,9 @@ fieldset{
 a{
     font-size: 125%;
     color: purple;
+}
+
+p{
+    font-size: 30px;
+    padding: 10px;
 }

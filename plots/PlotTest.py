@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 
 
 
-filepath = "..\webapp\dataset.csv"
+filepath = "../webapp/dataset.csv"
 data = pd.read_csv(filepath)
 
 # print(data.head())
@@ -28,12 +28,12 @@ data = pd.read_csv(filepath)
 # fig.savefig("price_over_yield")
 
 def fillCrops(data):
-	cropNames = data.crop.unique()
+	cropNames = data.Crop.unique()
 	crops = {}
 	# print(allCrops)
 	for crop in cropNames:
-		crops[crop] = data[data.crop == crop]
+		crops[crop] = data[data.Crop == crop]
 
 	return crops
 
-fillCrops(data)
+print(fillCrops(pd.read_csv("dummy.csv")))
