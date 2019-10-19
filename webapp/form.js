@@ -1,11 +1,8 @@
 var submit = document.getElementById("submit");
 
-var location="hi", name, yield;
-
 submit.onclick = function(){
-    location = document.getElementById("location");
-    name = document.getElementById("name");
-    yield = document.getElementById("yield");
+    var city = document.getElementById("city").value;
+    var state = document.getElementById("state").value;
+    var yield = document.getElementById("yield").value;
+    var profit = document.getElementById("profit").value;
 }
-
-console.log(location);
