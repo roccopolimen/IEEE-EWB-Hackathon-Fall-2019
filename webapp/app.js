@@ -8,18 +8,6 @@ var state = "";
 var yield = "";
 var profit = "";
 
-
-<<<<<<< HEAD
-submit.onclick = function(){
-    var crop = document.getElementById("crop").value;
-    var city = document.getElementById("city").value;
-    var state = document.getElementById("state").value;
-    var yield = document.getElementById("yield").value;
-    var profit = document.getElementById("profit").value;
-}
-
-=======
->>>>>>> 1042c5fde96bcba0350d5d92efae174a1ca7d09d
 CSVToJSON().fromFile("./dataset.csv").then(source => {
     console.log(source);
     source.push({
