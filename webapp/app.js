@@ -3,6 +3,7 @@ const JSONToCSV = require("json2csv").parse;
 const FileSystem = require("fs");
 const port = 8080;
 
+var path = require('path');
 var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
@@ -10,7 +11,8 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (request, response) => {
-    response.send(request.query);
+    //response.sendFile(path.join(__dirname, '../webapp', 'index.html'));
+    //response.send("<p>Thank you for submitting!</p><br><a href='google.com'>Go Home</a>");
 
     CSVToJSON().fromFile("./dataset.csv").then(source => {
         source.push({
