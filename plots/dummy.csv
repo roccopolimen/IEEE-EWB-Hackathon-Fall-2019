@@ -1,4 +1,4 @@
-Crop,"City,State",Yield,Profit,Temperature,Humidity,Pressure,WaterLevel
+﻿crop,"city,state",yield,profit,temperature,humidity,pressure,waterlevel
 Apple,"Montclair, NJ",1,100,21,20,1012,490
 Apple,"Poconos, NY",2,200,20,19,1015,480
 Apple,"Hoboken, NJ",3,201,19,17,1014,483
