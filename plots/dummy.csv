@@ -1,19 +1,19 @@
-Crop,City,State,Yield,Profit
-Apple,Montclair ,NJ,1,100
-Apple,Poconos,NY,2,200
-Apple,Hoboken,NJ,3,201
-Apple,New York,NY,4,202
-Apple,San Francisco,CA,5,203
-Banana,Montclair ,NJ,6,204
-Banana,Poconos,NY,7,205
-Banana,Montclair ,NJ,8,206
-Banana,Poconos,NY,9,207
-Banana,Hoboken,NJ,10,208
-Banana,New York,NY,11,209
-Banana,San Francisco,CA,12,210
-Pumpkin,Montclair ,NJ,13,211
-Pumpkin,Montclair ,NJ,14,212
-Pumpkin,Poconos,NY,15,213
-Pumpkin,Hoboken,NJ,16,214
-Pumpkin,New York,NY,17,215
-Pumpkin,San Francisco,CA,18,216
+Crop,"City,State",Yield,Profit,Temperature,Humidity,Pressure,WaterLevel
+Apple,"Montclair, NJ",1,100,21,20,1012,490
+Apple,"Poconos, NY",2,200,20,19,1015,480
+Apple,"Hoboken, NJ",3,201,19,17,1014,483
+Apple,"New York, NY",4,202,23,16,1016,473
+Apple,"San Francisco, CA",5,203,25,18,1017,465
+Banana,"Montclair, NJ",6,204,27,17,950,510
+Banana,"Poconos, NY",7,205,29,14,960,511
+Banana,"Montclair, NJ",8,206,28,13,970,523
+Banana,"Poconos, NY",9,207,26,12,980,505
+Banana,"Hoboken, NJ",10,208,24,11,990,506
+Banana,"New York, NY",11,209,30,10,985,519
+Banana,"San Francisco, CA",12,210,31,9,975,501
+Pumpkin,"Montclair, NJ",13,211,24,8,1020,478
+Pumpkin,"Montclair, NJ",14,212,25,21,1025,475
+Pumpkin,"Poconos, NY",15,213,26,23,1014,469
+Pumpkin,"Hoboken, NJ",16,214,20,24,1015,463
+Pumpkin,"New York, NY",17,215,21,25,1016,465
+Pumpkin,"San Francisco, CA",18,216,22,26,1019,467
