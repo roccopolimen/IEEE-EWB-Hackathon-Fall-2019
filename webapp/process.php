@@ -9,10 +9,8 @@
         $humidity = $_POST['humidity'];
         $pressure = $_POST['pressure'];
         $waterLevel = $_POST['water-level'];
-        echo "yo";
     }
 
-    echo = "hi";
     $keys = array('crop', 'city-state', 'yields', 'profit', 'temperature', 'humidity', 'pressure', 'water-level');
     $csv_line = array();
     foreach($keys as $key){

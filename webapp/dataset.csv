@@ -1,1 +1,2 @@
-crop,city-state,yields,profit,temperature,humidity,pressure,water-level
+"crop","cityState","yield","profit","temperature","humidity","pressure","waterLevel"
+"corn","hoboken, nj","200","340","78","yes","high","drowning"

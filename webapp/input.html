@@ -15,23 +15,23 @@
             <a href="data.html">Data</a>
         </nav>
         <main>
-            <form name="farmer-input" action="process.php" method="POST">
+            <form name="farmer-input" action="http://localhost:8080" method="GET">
                 <label for="crop">Name of Crop</label>
-                <input type="text" id="crop"><br>
-                <label for="city-state">City, State</label>
-                <input type="text" id="city-state"><br>
+                <input type="text" id="crop" name="crop"><br>
+                <label for="cityState">City, State</label>
+                <input type="text" id="cityState" name="cityState"><br>
                 <label for="yield">Yield Per Acre</label>
-                <input type="text" id="yield"><br>
+                <input type="text" id="yields" name="yields"><br>
                 <label for="profit">Profit Margin Per Acre</label>
-                <input type="text" id="profit"><br>
+                <input type="text" id="profit" name="profit"><br>
                 <label for="temperature">Temperatured (device input)</label>
-                <input type="text" id="temperature"><br>
+                <input type="text" id="temperature" name="temperature"><br>
                 <label for="humidity">Humidity (device input)</label>
-                <input type="text" id="humidity"><br>
+                <input type="text" id="humidity" name="humidity"><br>
                 <label for="pressure">Barometric Pressure (device input)</label>
-                <input type="text" id="pressure"><br>
-                <label for="water-level">Water Level (device input)</label>
-                <input type="text" id="water-level"><br>
+                <input type="text" id="pressure" name="pressure"><br>
+                <label for="waterLevel">Water Level (device input)</label>
+                <input type="text" id="waterLevel" name="waterLevel"><br>
                 <button type="submit" name="submit">Submit</button>
             </form>
         </main>
