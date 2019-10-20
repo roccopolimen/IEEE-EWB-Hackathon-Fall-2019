@@ -1,7 +1,8 @@
 #include <dht11.h>
-#define DHT11PIN 4
+#define DHT11PIN 6
 
 dht11 DHT11;
+int sensorVals[] = {0,0,0}; 
 
 void setup()
 {
@@ -15,14 +16,17 @@ void loop()
 
   int chk = DHT11.read(DHT11PIN);
 
-  Serial.print("Humidity (%): ");
-  Serial.println((float)DHT11.humidity, 2);
+  sensorVals[0] = (int)DHT11.humidity;
+  sensorVals[1] = (int)DHT11.temperature;
+  sensorVals[2] = analogRead(0);
+  
 
-  Serial.print("Temperature (C): ");
-  Serial.println((float)DHT11.temperature, 2);
-
-  Serial.println(analogRead(3));
-
+  Serial.print(sensorVals[0]);
+  Serial.print(",");
+  Serial.print(sensorVals[1]);
+  Serial.print(",");
+  Serial.print(sensorVals[2]);
+  Serial.println("\n");
   delay(2000);
 
 }
