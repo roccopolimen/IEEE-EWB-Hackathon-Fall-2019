@@ -1,6 +1,2 @@
-
-    const crop = document.getElementById("crop").value;
-    const city = document.getElementById("city").value;
-    const state = document.getElementById("state").value;
-    const yields = document.getElementById("yield").value;
-    const profit = document.getElementById("profit").value;
+import * as d3 from "d3";
+var allCrops = d3.map(data, function(d){return(d.crop)}).keys()
