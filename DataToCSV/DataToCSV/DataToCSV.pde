@@ -1,62 +1,80 @@
 import processing.serial.*;
+Serial myPort; //creates a software serial port on which you will listen to Arduino
+Table dataTable; //table where we will read in and store values. You can name it something more creative!
 
-int Oven_P1_1 = 8;
-int Oven_P1_2 = 9;
-int Oven_P5_1 = 10;
-int Oven_P5_2 = 11;
+int numReadings = 100; //keeps track of how many readings you’d like to take before writing the file.
+int readingCounter = 0; //counts each reading to compare to numReadings.
 
-Serial myPort;
-Table table;
-
-int numReadings = 10;
-int readingCounter = 0;
-
-String filename, val;
-
-void setup() {
-
+String fileName, val;
+void setup()
+{
 String portName = Serial.list()[0];
-myPort = new Serial(this, portName, 9600);
-table = new Table();
-table.addColumn("id");
-table.addColumn("second");
-table.addColumn("Humidity");
-table.addColumn("Temperature");
-table.addColumn("Water Level");
+//CAUTION: your Arduino port number is probably different! Mine happened to be 1. Use a "handshake" sketch to figure out and test which port number your Arduino is talking on. A "handshake" establishes that Arduino and Processing are listening/talking on the same port.
+//Here’s a link to a basic handshake tutorial: https://processing.org/tutorials/overview/
+
+myPort = new Serial(this, portName, 9600); //set up your port to listen to the serial port
+dataTable = new Table();
+
+dataTable.addColumn("id"); //This column stores a unique identifier for each record. We will just count up from 0 – so your first reading will be ID 0, your second will be ID 1, etc.
+
+//the following adds columns for time. You can also add milliseconds. See the Time/Date functions for Processing: https://www.processing.org/reference/
+dataTable.addColumn("year");
+dataTable.addColumn("month");
+dataTable.addColumn("day");
+dataTable.addColumn("hour");
+dataTable.addColumn("minute");
+dataTable.addColumn("second");
+
+//the following are dummy columns for each data value. Add as many columns as you have data values. Customize the names as needed. Make sure they are in the same order as the order that Arduino is sending them!
+dataTable.addColumn("Humidity");
+dataTable.addColumn("Temperature");
+dataTable.addColumn("Water Level");
+
 }
 
 void serialEvent(Serial myPort){
-try{
-String val = myPort.readStringUntil('\n');
-if (val != null) {
-println(val);
-//int sensorVals[] = int(split(val, ",")); // i dont need floats because I just need high or low input in 4 channel., what other function should I use.
+try {
+val = myPort.readStringUntil('\n'); //The newline separator separates each Arduino loop. We will parse the data by each newline separator.
+if (val != null) { //We have a reading! Record it.
+val = trim(val); //gets rid of any whitespace or Unicode nonbreakable space
+println(val); //Optional, useful for debugging. If you see this, you know data is being sent. Delete if you like.
+if(val.length() > 0){
+  println(val.length());
+float sensorVals[] = float(split(val, ',')); //parses the packet from Arduino and places the valeus into the sensorVals array. I am assuming floats. Change the data type to match the datatype coming from Arduino.
 
-String sensorVals[] = val.split(",");
+TableRow newRow = dataTable.addRow(); //add a row for this new reading
+newRow.setInt("id", dataTable.lastRowIndex());//record a unique identifier (the row’s index)
 
-println(sensorVals[1]);
-
-TableRow newRow = table.addRow();
-newRow.setInt("id", table.lastRowIndex());
+//record time stamp
+newRow.setInt("year", year());
+newRow.setInt("month", month());
+newRow.setInt("day", day());
+newRow.setInt("hour", hour());
+newRow.setInt("minute", minute());
 newRow.setInt("second", second());
-//newRow.setInt("Humidity", Integer.parseInt(sensorVals[0]));
-//newRow.setInt("Temperature", Integer.parseInt(sensorVals[1]));
-//newRow.setInt("Water Level", Integer.parseInt(sensorVals[2]));
 
-readingCounter++;
+//record sensor information. Customize the names so they match your sensor column names.
+newRow.setFloat("Humidity", sensorVals[0]);
+newRow.setFloat("Temperature", sensorVals[1]);
+newRow.setFloat("Water Level", sensorVals[2]);
 
+readingCounter++; //optional, use if you’d like to write your file every numReadings reading cycles
 
-
-if (readingCounter %numReadings ==0)
+//saves the table as a csv in the same folder as the sketch every numReadings.
+if (readingCounter % numReadings ==0)//The % is a modulus, a math operator that signifies remainder after division. The if statement checks if readingCounter is a multiple of numReadings (the remainder of readingCounter/numReadings is 0)
 {
-saveTable(table, "data/SensorData.csv");
+fileName = str(year()) + "." + str(month()) + "." + str(day()) + "." + str(hour()) + "." + str(minute())+ "." + str(second()); //this filename is of the form year+month+day+readingCounter
+saveTable(dataTable, fileName + ".csv"); //Woo! save it to your computer. It is ready for all your spreadsheet dreams.
 }
 }
-}catch(RuntimeException e) {
+}
+}
+catch(RuntimeException e) {
 e.printStackTrace();
-}finally{}
+}
 }
 
-void draw(){
-
+void draw()
+{
+//visualize your sensor data in real time here! In the future we hope to add some cool and useful graphic displays that can be tuned to different ranges of values.
 }
